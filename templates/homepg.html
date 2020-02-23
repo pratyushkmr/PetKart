@@ -208,7 +208,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img src="{% static 'C:/Users/A1029301/Desktop/PS/ecom/ecom/static/img/dog1.jpg' %}" class="card-img-top"
+                <img src="{{ item.image.url }}" class="card-img-top"
                   alt="">
                 <a href="{{ item.get_absolute_urls }}">
                   <div class="mask rgba-white-slight"></div>
