@@ -6,12 +6,12 @@ from django.db.models.signals import post_save
 
 
 CATEGORY_CHOICES=(
-        ('D','dog'),
-        ('C', 'cat')
+        ('V','Vintage'),
+        ('A', 'Antique')
         )
 LABEL_CHOICES=(
-        ('B', 'breed'),
-        ('M','mix')
+        ('N', 'Indian'),
+        ('I','International')
         )
 ADRESS_CHOICES=(
         ('B', 'BILLING'),
@@ -50,6 +50,8 @@ class Item(models.Model):
         return reverse("core:remove-from-cart",kwargs={
                 'slug': self.slug
                 })
+    class Meta:
+        ordering = ['price']
     
 
 class OrderItem(models.Model):

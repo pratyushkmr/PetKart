@@ -25,8 +25,9 @@ def is_valid_form(values):
 
 class HomeView(ListView):
     model=Item
-    paginate_by= 2
+    paginate_by= 4
     template_name="homepg.html"
+    
 
 class CheckoutView(View):
      def get(self, *args, **kwargs):
@@ -186,13 +187,13 @@ class CheckoutView(View):
                 payment_option = form.cleaned_data.get('payment_option')
     
                 if payment_option == 'S':
-                    return redirect('core:payment', payment_option='stripe')
-                elif payment_option == 'P':
-                    return redirect('core:payment', payment_option='paypal')
+                    return redirect('core:payment')
+               ## elif payment_option == 'P':
+                   # return redirect('core:payment', payment_option='paypal')
                 else:
                     messages.warning(
                         self.request, "Invalid payment option selected")
-                    return redirect('core:checkout')
+                    return redirect('core:payment')
          except ObjectDoesNotExist:
             messages.warning(self.request, "You do not have an active order")
             return redirect("core:order-summary")
